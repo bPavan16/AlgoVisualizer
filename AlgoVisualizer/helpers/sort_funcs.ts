@@ -142,6 +142,7 @@ export async function heapSort(data: chartDataProps[], setChartData: React.Dispa
 
     return sortedData;
 }
+
 export async function quickSort(data: chartDataProps[], setChartData: React.Dispatch<React.SetStateAction<chartDataProps[]>>, delay: number): Promise<chartDataProps[]> {
     const sortedData = [...data];
 
@@ -175,6 +176,7 @@ export async function quickSort(data: chartDataProps[], setChartData: React.Disp
     await quickSortHelper(sortedData, 0, sortedData.length - 1);
     return sortedData;
 }
+
 export async function insertionSort(data: chartDataProps[], setChartData: React.Dispatch<React.SetStateAction<chartDataProps[]>>, delay: number) {
     const sortedData = [...data];
     let n = sortedData.length;
@@ -195,3 +197,22 @@ export async function insertionSort(data: chartDataProps[], setChartData: React.
     }
     return sortedData;
 }
+// Function to get appropriate sort function based on algorithm name
+export const getSortFunction = (algorithm: string) => {
+    switch (algorithm) {
+      case 'bubble':
+        return bubbleSort;
+      case 'quick':
+        return quickSort;
+      case 'merge':
+        return mergeSort;
+      case 'insertion':
+        return insertionSort;
+      case 'selection':
+        return selectionSort;
+      case 'heap':
+        return heapSort;
+      default:
+        return null;
+    }
+  };

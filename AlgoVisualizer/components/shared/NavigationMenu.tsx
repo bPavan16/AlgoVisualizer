@@ -18,38 +18,35 @@ import {
 const SortingAlgorithmContent: { title: string; href: string; description: string }[] = [
     {
         title: "Bubble Sort",
-        href: "graph/sorts/bubble",
-        description: "A simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
+        href: "/sorts/bubble",
+        description: "A simple sort algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.",
     },
     {
         title: "Selection Sort",
-        href: "graph/sorts/selection",
+        href: "/sorts/selection",
         description: "An in-place comparison sort. It checks for the smallest element in the array and swaps it with the first element.",
     },
     {
         title: "Merge Sort",
-        href: "graph/sorts/merge",
+        href: "/sorts/merge",
         description: "Merge sort is a divide and conquer algorithm that divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves.",
     },
     {
         title: "Quick Sort",
-        href: "graph/sorts/quick",
+        href: "/sorts/quick",
         description: "Quick sort is a divide and conquer algorithm. It picks an element as pivot and partitions the given array around the picked pivot.",
     },
     {
         title: "Insertion Sort",
-        href: "graph/sorts/insertion",
+        href: "/sorts/insertion",
         description: "Insertion sort is a simple sorting algorithm that builds the final sorted array one item at a time.",
     },
     {
         title: "Heap Sort",
-        href: "graph/sorts/heap",
+        href: "/sorts/heap",
         description: "Heap sort is a comparison-based sorting technique based on Binary Heap data structure.",
     },
-
-
-
-]
+];
 
 export function NavigationMenuMain() {
     return (
@@ -109,6 +106,17 @@ export function NavigationMenuMain() {
 
 
 
+                    </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                    <NavigationMenuTrigger>Backtracking Visualizer</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                        <ul className="grid w-[400px] gap-3 p-4 md:w-[600px] md:grid-cols-2 lg:w-[800px] lg:grid-cols-2">
+                            <ListItem href="/sudoku" title="Sudoku Solver">
+                                Visualize the process of solving a Sudoku puzzle step by step.
+                            </ListItem>
+                        </ul>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
                

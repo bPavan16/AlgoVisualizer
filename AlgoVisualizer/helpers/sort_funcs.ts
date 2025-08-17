@@ -1,8 +1,8 @@
 "use client"
 
-import { chartDataProps, sleep } from "../components/shared/BarGraph";
+import { ChartDataProps, sleep } from "../components/shared/BarGraph";
 
-export async function bubbleSort(data: chartDataProps[], setChartData: React.Dispatch<React.SetStateAction<chartDataProps[]>>, delay: number) {
+export async function bubbleSort(data: ChartDataProps[], setChartData: React.Dispatch<React.SetStateAction<ChartDataProps[]>>, delay: number) {
     const sortedData = [...data];
     let n = sortedData.length;
     let swapped: boolean;
@@ -22,7 +22,7 @@ export async function bubbleSort(data: chartDataProps[], setChartData: React.Dis
 }
 
 
-export async function selectionSort(data: chartDataProps[], setChartData: React.Dispatch<React.SetStateAction<chartDataProps[]>>, delay: number) {
+export async function selectionSort(data: ChartDataProps[], setChartData: React.Dispatch<React.SetStateAction<ChartDataProps[]>>, delay: number) {
     const sortedData = [...data];
     let n = sortedData.length;
 
@@ -45,10 +45,10 @@ export async function selectionSort(data: chartDataProps[], setChartData: React.
     return sortedData;
 }
 
-export async function mergeSort(data: chartDataProps[], setChartData: React.Dispatch<React.SetStateAction<chartDataProps[]>>, delay: number): Promise<chartDataProps[]> {
+export async function mergeSort(data: ChartDataProps[], setChartData: React.Dispatch<React.SetStateAction<ChartDataProps[]>>, delay: number): Promise<ChartDataProps[]> {
     const sortedData = [...data];
 
-    async function mergeSortHelper(arr: chartDataProps[], start: number, end: number): Promise<void> {
+    async function mergeSortHelper(arr: ChartDataProps[], start: number, end: number): Promise<void> {
         if (start >= end) return;
 
         const mid = Math.floor((start + end) / 2);
@@ -57,7 +57,7 @@ export async function mergeSort(data: chartDataProps[], setChartData: React.Disp
         await merge(arr, start, mid, end);
     }
 
-    async function merge(arr: chartDataProps[], start: number, mid: number, end: number): Promise<void> {
+    async function merge(arr: ChartDataProps[], start: number, mid: number, end: number): Promise<void> {
         const left = arr.slice(start, mid + 1);
         const right = arr.slice(mid + 1, end + 1);
 
@@ -104,11 +104,11 @@ export async function mergeSort(data: chartDataProps[], setChartData: React.Disp
 }
 
 
-export async function heapSort(data: chartDataProps[], setChartData: React.Dispatch<React.SetStateAction<chartDataProps[]>>, delay: number) {
+export async function heapSort(data: ChartDataProps[], setChartData: React.Dispatch<React.SetStateAction<ChartDataProps[]>>, delay: number) {
     const sortedData = [...data];
     let n = sortedData.length;
 
-    const heapify = async (arr: chartDataProps[], length: number, i: number) => {
+    const heapify = async (arr: ChartDataProps[], length: number, i: number) => {
         let largest = i;
         const left = 2 * i + 1;
         const right = 2 * i + 2;
@@ -143,10 +143,10 @@ export async function heapSort(data: chartDataProps[], setChartData: React.Dispa
     return sortedData;
 }
 
-export async function quickSort(data: chartDataProps[], setChartData: React.Dispatch<React.SetStateAction<chartDataProps[]>>, delay: number): Promise<chartDataProps[]> {
+export async function quickSort(data: ChartDataProps[], setChartData: React.Dispatch<React.SetStateAction<ChartDataProps[]>>, delay: number): Promise<ChartDataProps[]> {
     const sortedData = [...data];
 
-    async function quickSortHelper(arr: chartDataProps[], low: number, high: number): Promise<void> {
+    async function quickSortHelper(arr: ChartDataProps[], low: number, high: number): Promise<void> {
         if (low < high) {
             const pi = await partition(arr, low, high);
             await quickSortHelper(arr, low, pi - 1);
@@ -154,7 +154,7 @@ export async function quickSort(data: chartDataProps[], setChartData: React.Disp
         }
     }
 
-    async function partition(arr: chartDataProps[], low: number, high: number): Promise<number> {
+    async function partition(arr: ChartDataProps[], low: number, high: number): Promise<number> {
         const pivot = arr[high].bar;
         let i = low - 1;
 
@@ -177,7 +177,7 @@ export async function quickSort(data: chartDataProps[], setChartData: React.Disp
     return sortedData;
 }
 
-export async function insertionSort(data: chartDataProps[], setChartData: React.Dispatch<React.SetStateAction<chartDataProps[]>>, delay: number) {
+export async function insertionSort(data: ChartDataProps[], setChartData: React.Dispatch<React.SetStateAction<ChartDataProps[]>>, delay: number) {
     const sortedData = [...data];
     let n = sortedData.length;
 

@@ -4,6 +4,39 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 
+const socialLinks = [
+    {
+        name: 'Twitter',
+        url: 'https://twitter.com/mrPavanB69',
+        icon: null, // Optionally add icon JSX here
+    },
+    {
+        name: 'Github',
+        url: 'https://github.com/bPavan16',
+        icon: null,
+    },
+    {
+        name:"Medium",
+        url: 'https://medium.com/@bPavan16',
+        icon: null,
+    }
+    // Add more socials here
+];
+
+const docsLinks = [
+    {
+        name: 'Docs',
+        url: '/',
+        external: true,
+    },
+    {
+        name: 'Methodology',
+        url: '/',
+        external: false,
+    },
+    // Add more docs/helpful links here
+];
+
 export default function SiteFooter() {
     const {
         register,
@@ -27,19 +60,24 @@ export default function SiteFooter() {
                         <div className="mt-8 space-y-4 lg:mt-0">
 
                             <div>
-                                <h3 className="text-2xl font-medium">This is a fake newsletter title</h3>
-                                <p className="mt-4 max-w-lg  ">
-                                    This is not a real newsletter email input. This is for you to build upon
+                                <h3 className="text-2xl font-medium">Contact Me</h3>
+                                <p className="mt-4 max-w-lg">
+                                    Have a question, suggestion, or want to collaborate? Send me a message below!
                                 </p>
                             </div>
                             <form onSubmit={handleSubmit(onSubmit)} className="mt-6 flex w-full flex-col gap-3 rounded-xl border p-4">
                                 <Input
                                     {...register('email', { required: true })}
-                                    placeholder="Enter your email"
+                                    placeholder="Your email address"
                                     type="email"
                                 />
+                                <Input
+                                    {...register('message', { required: true })}
+                                    placeholder="Your message"
+                                    type="text"
+                                />
                                 <Button type="submit">
-                                    Sign Up
+                                    Send Message
                                 </Button>
                             </form>
                         </div>
@@ -54,12 +92,13 @@ export default function SiteFooter() {
                                 <p className="font-medium ">Socials</p>
 
                                 <ul className="mt-6 space-y-4 text-sm">
-                                    <li>
-                                        <Link href="https://twitter.com/rasmickyy" target="_blank" className="transition hover:opacity-75"> Twitter </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="https://www.youtube.com/@rasmic" target="_blank" className="  transition hover:opacity-75"> YouTube </Link>
-                                    </li>
+                                    {socialLinks.map((link) => (
+                                        <li key={link.name}>
+                                            <Link href={link.url} target="_blank" className="transition hover:opacity-75">
+                                                {link.icon ? link.icon : link.name}
+                                            </Link>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
 
@@ -67,28 +106,26 @@ export default function SiteFooter() {
                                 <p className="font-medium ">Helpful Links</p>
 
                                 <ul className="mt-6 space-y-4 text-sm">
-                                    <li>
-                                        <Link target="_blank" href="/" rel="noopener noreferrer" className="  transition hover:opacity-75"> Docs </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/" className="  transition hover:opacity-75"> Methodology </Link>
-                                    </li>
+                                    {docsLinks.map((link) => (
+                                        <li key={link.name}>
+                                            <Link
+                                                href={link.url}
+                                                target={link.external ? "_blank" : undefined}
+                                                rel={link.external ? "noopener noreferrer" : undefined}
+                                                className="transition hover:opacity-75"
+                                            >
+                                                {link.name}
+                                            </Link>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                         </div>
 
                         <div className="mt-8 border-t   pt-8">
-                            <ul className="flex flex-wrap gap-4 text-xs">
-                                <li>
-                                    <a href="/" target="_blank" className="transition hover:opacity-75">Terms & Conditions </a>
-                                </li>
+                        
 
-                                <li>
-                                    <a href="/" target="_blank" className="transition hover:opacity-75">Privacy Policy </a>
-                                </li>
-                            </ul>
-
-                            <p className="mt-8 text-xs  ">&copy; 2024. SomeCompany LLC. All rights reserved.</p>
+                            <p className="mt-8 text-xs  ">&copy; 2024. <a href="https://github.com/bPavan16" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-75">bPavan16</a>. All rights reserved.</p>
                         </div>
                     </div>
                 </div>

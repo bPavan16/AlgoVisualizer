@@ -386,7 +386,7 @@ export default function IndexPage() {
         <footer className="bg-gray-50 p-6 text-center text-sm text-gray-500 dark:bg-gray-900 dark:text-gray-400 sm:p-8">
           <p>© {new Date().getFullYear()} AlgoVisualizer. Created for educational purposes.</p>
           <div className="mt-4 flex justify-center gap-4">
-            <a href="https://github.com/yourusername/AlgoVisualizer" className="hover:text-blue-600 dark:hover:text-blue-400" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/bPavan16/AlgoVisualizer" className="hover:text-blue-600 dark:hover:text-blue-400" target="_blank" rel="noopener noreferrer">
               <span className="flex items-center gap-1">
                 <Code className="h-4 w-4" />
                 <span>GitHub</span>

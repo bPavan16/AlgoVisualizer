@@ -28,7 +28,7 @@ interface CodeTabProps {
 
 export function CodeTab({ codeSnippets }: CodeTabProps) {
     return (
-        <Tabs defaultValue="C++" className="md:w-fit lg:w-1/2 ">
+        <Tabs defaultValue="C++" className="w-full ">
             <TabsList className="grid w-full grid-cols-5 p-1">
                 <TabsTrigger value="C">C</TabsTrigger>
                 <TabsTrigger value="C++">C++</TabsTrigger>

@@ -11,7 +11,7 @@ interface CodeBlockProps {
 
 export const CodeBlock: React.FC<CodeBlockProps> = ({ code, language }) => {
   return (
-    <div className="rounded-md overflow-hidden">
+    <div className="w-full  overflow-hidden rounded-md">
       <SyntaxHighlighter
         language={language}
         style={vscDarkPlus}

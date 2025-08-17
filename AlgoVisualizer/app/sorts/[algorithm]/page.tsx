@@ -1,7 +1,7 @@
 'use client'
 import { Barchart } from '@/components/shared/BarGraph'
 import { CodeTab } from '@/components/shared/CodeTab'
-import { getSortFunction } from '@/helpers/sort_funcs'
+import { bubbleSort, getSortFunction } from '@/helpers/sort_funcs'
 import { CodeSnippetsAll } from '@/helpers/CodeSnippets'
 import { sortingAlgorithmsData } from '@/helpers/SortingAlgorithmsData'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -45,8 +45,9 @@ const SortingAlgorithmPage = () => {
   } = algorithmData
   
   const sortFunction = getSortFunction(algorithmSlug)
-  const codeSnippets = CodeSnippetsAll[name] || []
   
+  const codeSnippets = CodeSnippetsAll[name as keyof typeof CodeSnippetsAll] || []
+
   // Initialize dark mode based on system preference
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -79,16 +80,16 @@ const SortingAlgorithmPage = () => {
           className="rounded-full dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
         >
           {isDarkMode ? (
-            <Sun className="h-5 w-5 text-yellow-500" />
+            <Sun className="size-5 text-yellow-500" />
           ) : (
-            <Moon className="h-5 w-5 text-blue-600" />
+            <Moon className="size-5 text-blue-600" />
           )}
         </Button>
       </div>
       
       <div className="relative mb-10 text-center">
         {/* Decorative elements */}
-        <div className="absolute -top-6 left-1/2 h-24 w-24 -translate-x-1/2 opacity-10">
+        <div className="absolute -top-6 left-1/2 size-24 -translate-x-1/2 opacity-10">
           <ArrowUpDown size={96} className="text-blue-500 dark:text-blue-400" />
         </div>
         
@@ -106,21 +107,21 @@ const SortingAlgorithmPage = () => {
             value="visualizer" 
             className="data-[state=active]:bg-blue-600 data-[state=active]:text-white dark:text-gray-200 dark:data-[state=active]:bg-blue-700 dark:data-[state=inactive]:text-gray-400"
           >
-            <BarChart3 className="mr-2 h-4 w-4" />
+            <BarChart3 className="mr-2 size-4" />
             Interactive Visualizer
           </TabsTrigger>
           <TabsTrigger 
             value="explanation" 
             className="data-[state=active]:bg-blue-600 data-[state=active]:text-white dark:text-gray-200 dark:data-[state=active]:bg-blue-700 dark:data-[state=inactive]:text-gray-400"
           >
-            <BookOpen className="mr-2 h-4 w-4" />
+            <BookOpen className="mr-2 size-4" />
             Algorithm Explanation
           </TabsTrigger>
           <TabsTrigger 
             value="code" 
             className="data-[state=active]:bg-blue-600 data-[state=active]:text-white dark:text-gray-200 dark:data-[state=active]:bg-blue-700 dark:data-[state=inactive]:text-gray-400"
           >
-            <Code className="mr-2 h-4 w-4" />
+            <Code className="mr-2 size-4" />
             Implementation
           </TabsTrigger>
         </TabsList>
@@ -132,7 +133,7 @@ const SortingAlgorithmPage = () => {
         >
           <div className="mb-6">
             <h2 className="mb-2 flex items-center text-2xl font-bold text-blue-800 dark:text-blue-300">
-              <LineChart className="mr-2 h-6 w-6 text-blue-600 dark:text-blue-400" />
+              <LineChart className="mr-2 size-6 text-blue-600 dark:text-blue-400" />
               Try It Yourself
             </h2>
             <p className="mb-6 text-slate-600 dark:text-slate-300">
@@ -145,7 +146,7 @@ const SortingAlgorithmPage = () => {
         <TabsContent value="explanation" className="space-y-6">
           <div>
             <h2 className="mb-4 flex items-center text-2xl font-bold text-blue-800 dark:text-blue-300">
-              <BookOpen className="mr-2 h-6 w-6 text-blue-600 dark:text-blue-400" />
+              <BookOpen className="mr-2 size-6 text-blue-600 dark:text-blue-400" />
               Understanding {name}
             </h2>
             <p className="mb-6 text-lg text-slate-600 dark:text-slate-300">
@@ -160,15 +161,15 @@ const SortingAlgorithmPage = () => {
                 <div className="flex flex-col items-center">
                   <div className="relative mb-4 h-48 w-full max-w-lg overflow-hidden rounded-lg border border-blue-100 bg-blue-50
                       dark:border-gray-700 dark:bg-gray-900">
-                    <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
+                    <div className="absolute left-0 top-0 flex size-full items-center justify-center">
                       <div className="text-center">
                         <p className="mb-2 font-medium text-blue-800 dark:text-blue-300">{name} Animation</p>
                         <div className="flex justify-center space-x-2">
                           {visualization.elements.map((num, i) => (
                             <div 
                               key={i} 
-                              className={`flex h-10 w-10 items-center justify-center rounded-md font-bold text-white
-                                ${visualization.highlightIndices.includes(i) ? 'bg-blue-600 scale-110 shadow-md dark:bg-blue-700' : 'bg-blue-400 dark:bg-blue-500'}`}
+                              className={`flex size-10 items-center justify-center rounded-md font-bold text-white
+                                ${visualization.highlightIndices.includes(i) ? 'scale-110 bg-blue-600 shadow-md dark:bg-blue-700' : 'bg-blue-400 dark:bg-blue-500'}`}
                             >
                               {num}
                             </div>
@@ -177,7 +178,7 @@ const SortingAlgorithmPage = () => {
                         <div className="mt-4 flex items-center justify-center text-blue-600 dark:text-blue-400">
                           <span>{visualization.explanation}</span>
                           {visualization.icon && (
-                            <visualization.icon className="ml-2 h-4 w-4" />
+                            <visualization.icon className="ml-2 size-4" />
                           )}
                         </div>
                       </div>
@@ -194,7 +195,7 @@ const SortingAlgorithmPage = () => {
               <div className="rounded-lg border border-blue-100 bg-white p-6 shadow-sm 
                   dark:border-gray-700 dark:bg-gray-800 dark:shadow-none">
                 <h3 className="mb-3 flex items-center text-xl font-bold text-blue-700 dark:text-blue-300">
-                  <RefreshCw className="mr-2 h-5 w-5 text-blue-600 dark:text-blue-400" /> 
+                  <RefreshCw className="mr-2 size-5 text-blue-600 dark:text-blue-400" /> 
                   How It Works
                 </h3>
                 <ol className="list-decimal space-y-2 pl-5 text-slate-700 dark:text-slate-300">
@@ -207,7 +208,7 @@ const SortingAlgorithmPage = () => {
               <div className="rounded-lg border border-blue-100 bg-white p-6 shadow-sm
                   dark:border-gray-700 dark:bg-gray-800 dark:shadow-none">
                 <h3 className="mb-3 flex items-center text-xl font-bold text-blue-700 dark:text-blue-300">
-                  <Clock className="mr-2 h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  <Clock className="mr-2 size-5 text-blue-600 dark:text-blue-400" />
                   Complexity Analysis
                 </h3>
                 <div className="space-y-3 text-slate-700 dark:text-slate-300">
@@ -240,7 +241,7 @@ const SortingAlgorithmPage = () => {
               <div className="rounded-lg border border-blue-100 bg-white p-6 shadow-sm
                   dark:border-gray-700 dark:bg-gray-800 dark:shadow-none">
                 <h3 className="mb-3 flex items-center text-xl font-bold text-blue-700 dark:text-blue-300">
-                  <Award className="mr-2 h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  <Award className="mr-2 size-5 text-blue-600 dark:text-blue-400" />
                   Advantages
                 </h3>
                 <ul className="list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-300">
@@ -253,7 +254,7 @@ const SortingAlgorithmPage = () => {
               <div className="rounded-lg border border-blue-100 bg-white p-6 shadow-sm
                   dark:border-gray-700 dark:bg-gray-800 dark:shadow-none">
                 <h3 className="mb-3 flex items-center text-xl font-bold text-blue-700 dark:text-blue-300">
-                  <Zap className="mr-2 h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  <Zap className="mr-2 size-5 text-blue-600 dark:text-blue-400" />
                   Disadvantages
                 </h3>
                 <ul className="list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-300">
@@ -267,7 +268,7 @@ const SortingAlgorithmPage = () => {
             <div className="mt-8 rounded-lg border border-blue-100 bg-white p-6 shadow-sm
                 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none">
               <h3 className="mb-3 flex items-center text-xl font-bold text-blue-700 dark:text-blue-300">
-                <Lightbulb className="mr-2 h-5 w-5 text-blue-600 dark:text-blue-400" />
+                <Lightbulb className="mr-2 size-5 text-blue-600 dark:text-blue-400" />
                 When to Use {name}
               </h3>
               <div className="text-slate-700 dark:text-slate-300">
@@ -327,15 +328,15 @@ const SortingAlgorithmPage = () => {
         <TabsContent value="code">
           <div className="space-y-6">
             <h2 className="mb-4 flex items-center text-2xl font-bold text-blue-800 dark:text-blue-300">
-              <Code className="mr-2 h-6 w-6 text-blue-600 dark:text-blue-400" />
+              <Code className="mr-2 size-6 text-blue-600 dark:text-blue-400" />
               {name} Implementation
             </h2>
             <p className="mb-6 text-lg text-slate-600 dark:text-slate-300">
               Check out these implementations of {name} in different programming languages.
             </p>
             
-            {codeSnippets.length > 0 ? (
-              <CodeTab codeSnippets={codeSnippets} />
+            {CodeSnippetsAll[algorithmSlug] ? (
+              <CodeTab codeSnippets={CodeSnippetsAll[algorithmSlug]} />
             ) : (
               <div className="rounded bg-blue-50 p-4 text-blue-700 dark:bg-gray-700 dark:text-blue-300">
                 No code examples available yet.
@@ -350,9 +351,9 @@ const SortingAlgorithmPage = () => {
                     <AccordionTrigger className="text-lg font-medium text-blue-700 dark:text-blue-300">
                       <div className="flex items-center">
                         {variant.icon ? (
-                          <variant.icon className="mr-2 h-5 w-5" />
+                          <variant.icon className="mr-2 size-5" />
                         ) : (
-                          <RefreshCw className="mr-2 h-5 w-5" />
+                          <RefreshCw className="mr-2 size-5" />
                         )}
                         {variant.name}
                       </div>
@@ -395,7 +396,7 @@ const SortingAlgorithmPage = () => {
       <div className="mt-12 rounded-lg border border-blue-100 bg-white p-6 shadow-sm
           dark:border-gray-700 dark:bg-gray-800 dark:shadow-none">
         <h2 className="mb-4 flex items-center text-2xl font-bold text-blue-800 dark:text-blue-300">
-          <BarChart3 className="mr-2 h-6 w-6 text-blue-600 dark:text-blue-400" />
+          <BarChart3 className="mr-2 size-6 text-blue-600 dark:text-blue-400" />
           Comparison with Other Sorting Algorithms
         </h2>
         <div className="overflow-x-auto">

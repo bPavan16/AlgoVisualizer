@@ -335,8 +335,8 @@ const SortingAlgorithmPage = () => {
               Check out these implementations of {name} in different programming languages.
             </p>
             
-            {CodeSnippetsAll[algorithmSlug] ? (
-              <CodeTab codeSnippets={CodeSnippetsAll[algorithmSlug]} />
+            {algorithmSlug in CodeSnippetsAll ? (
+              <CodeTab codeSnippets={CodeSnippetsAll[algorithmSlug as keyof typeof CodeSnippetsAll]} />
             ) : (
               <div className="rounded bg-blue-50 p-4 text-blue-700 dark:bg-gray-700 dark:text-blue-300">
                 No code examples available yet.

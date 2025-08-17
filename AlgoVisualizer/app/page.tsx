@@ -59,7 +59,7 @@ export default function IndexPage() {
     {
       id: 'quick',
       name: 'Quick Sort',
-  description: 'A divide-and-conquer algorithm that picks a pivot element and partitions the array around it.'.replace(/'/g, "&#39;"),
+      description: 'A divide-and-conquer algorithm that picks a pivot element and partitions the array around it.',
       complexity: 'O(n log n)',
       category: 'efficient',
       icon: Code,
@@ -68,7 +68,7 @@ export default function IndexPage() {
     {
       id: 'merge',
       name: 'Merge Sort',
-  description: 'A stable, divide-and-conquer algorithm that divides the array, sorts, and merges.'.replace(/'/g, "&#39;"),
+      description: 'A stable, divide-and-conquer algorithm that divides the array, sorts, and merges.',
       complexity: 'O(n log n)',
       category: 'efficient',
       icon: GitMerge,
@@ -77,7 +77,7 @@ export default function IndexPage() {
     {
       id: 'heap',
       name: 'Heap Sort',
-  description: 'Converts the array into a heap data structure, then repeatedly extracts the maximum.'.replace(/'/g, "&#39;"),
+      description: 'Converts the array into a heap data structure, then repeatedly extracts the maximum.',
       complexity: 'O(n log n)',
       category: 'efficient',
       icon: Layers,
@@ -86,7 +86,7 @@ export default function IndexPage() {
     {
       id: 'bubble',
       name: 'Bubble Sort',
-  description: 'Repeatedly steps through the list, compares adjacent elements, and swaps them if needed.'.replace(/'/g, "&#39;"),
+      description: 'Repeatedly steps through the list, compares adjacent elements, and swaps them if needed.',
       complexity: 'O(n²)',
       category: 'simple',
       icon: ArrowUpDown,
@@ -95,7 +95,7 @@ export default function IndexPage() {
     {
       id: 'insertion',
       name: 'Insertion Sort',
-  description: 'Builds a sorted array one element at a time, similar to sorting playing cards.'.replace(/'/g, "&#39;"),
+      description: 'Builds a sorted array one element at a time, similar to sorting playing cards.',
       complexity: 'O(n²)',
       category: 'simple',
       icon: Shuffle,
@@ -104,7 +104,7 @@ export default function IndexPage() {
     {
       id: 'selection',
       name: 'Selection Sort',
-  description: 'Repeatedly finds the minimum element and puts it at the beginning of the array.'.replace(/'/g, "&#39;"),
+      description: 'Repeatedly finds the minimum element and puts it at the beginning of the array.',
       complexity: 'O(n²)',
       category: 'simple',
       icon: ListOrdered,
@@ -383,7 +383,7 @@ export default function IndexPage() {
 
         {/* Footer */}
         <footer className="bg-gray-50 p-6 text-center text-sm text-gray-500 dark:bg-gray-900 dark:text-gray-400 sm:p-8">
-          <p>&copy; {new Date().getFullYear()} AlgoVisualizer. Created for educational purposes.</p>
+          <p>© {new Date().getFullYear()} AlgoVisualizer. Created for educational purposes.</p>
           <div className="mt-4 flex justify-center gap-4">
             <a href="https://github.com/bPavan16/AlgoVisualizer" className="hover:text-blue-600 dark:hover:text-blue-400" target="_blank" rel="noopener noreferrer">
               <span className="flex items-center gap-1">

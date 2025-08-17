@@ -14,26 +14,26 @@ const SudokuPage = () => {
   const [activeTab, setActiveTab] = useState("visualizer")
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-7xl">
+    <div className="container mx-auto max-w-7xl px-4 py-8">
       <div className="mb-10 text-center">
-        <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-purple-600">
+        <h1 className="mb-4 bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent lg:text-5xl">
           Sudoku Solver Visualizer
         </h1>
-        <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+        <p className="mx-auto max-w-3xl text-xl text-slate-600">
           Watch the backtracking algorithm solve Sudoku puzzles in real-time. Visualize how the algorithm explores possibilities and backtracks when it hits a dead end.
         </p>
       </div>
 
       <Tabs defaultValue="visualizer" value={activeTab} onValueChange={setActiveTab} className="mb-10">
-        <TabsList className="grid w-full grid-cols-3 mb-8">
+        <TabsList className="mb-8 grid w-full grid-cols-3">
           <TabsTrigger value="visualizer">Interactive Visualizer</TabsTrigger>
           <TabsTrigger value="algorithm">Algorithm Explanation</TabsTrigger>
           <TabsTrigger value="guide">User Guide</TabsTrigger>
         </TabsList>
         
-        <TabsContent value="visualizer" className="p-4 bg-gradient-to-br from-indigo-50 to-purple-50 rounded-lg shadow-sm">
+        <TabsContent value="visualizer" className="rounded-lg bg-gradient-to-br from-indigo-50 to-purple-50 p-4 shadow-sm">
           <div className="mb-6">
-            <h2 className="text-2xl font-bold text-indigo-800 mb-2">Try It Yourself</h2>
+            <h2 className="mb-2 text-2xl font-bold text-indigo-800">Try It Yourself</h2>
             <p className="text-slate-600">
               Select difficulty, adjust speed, and watch the algorithm work. You can also enter your own numbers before solving.
             </p>
@@ -43,26 +43,26 @@ const SudokuPage = () => {
         
         <TabsContent value="algorithm" className="space-y-6">
           <div>
-            <h2 className="text-2xl font-bold text-indigo-800 mb-4">Backtracking Algorithm</h2>
-            <p className="text-lg text-slate-600 mb-4">
+            <h2 className="mb-4 text-2xl font-bold text-indigo-800">Backtracking Algorithm</h2>
+            <p className="mb-4 text-lg text-slate-600">
               The Sudoku solver uses a <span className="font-semibold">backtracking algorithm</span>, which is a depth-first search technique that explores all possible solutions by trying values and undoing them when they lead to contradictions.
             </p>
             
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
-              <div className="bg-white p-6 rounded-lg shadow-sm border border-indigo-100">
-                <h3 className="text-xl font-bold text-indigo-700 mb-3">How It Works</h3>
-                <ol className="list-decimal pl-5 space-y-2 text-slate-700">
+            <div className="mb-8 grid gap-8 md:grid-cols-2">
+              <div className="rounded-lg border border-indigo-100 bg-white p-6 shadow-sm">
+                <h3 className="mb-3 text-xl font-bold text-indigo-700">How It Works</h3>
+                <ol className="list-decimal space-y-2 pl-5 text-slate-700">
                   <li>Find an empty cell in the Sudoku grid</li>
                   <li>Try placing digits 1-9 in this cell</li>
-                  <li>For each digit, check if it's valid according to Sudoku rules</li>
+                  <li>{"For each digit, check if it's valid according to Sudoku rules"}</li>
                   <li>If valid, place the digit and recursively try to fill the rest of the grid</li>
-                  <li>If we can't place any digit (1-9) in a cell, we <span className="font-semibold text-rose-600">backtrack</span> to the previous cell and try a different digit</li>
+                  <li>{"If we can't place any digit (1-9) in a cell, we "}<span className="font-semibold text-rose-600">backtrack</span> to the previous cell and try a different digit</li>
                   <li>Continue until the entire grid is filled</li>
                 </ol>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-sm border border-indigo-100">
-                <h3 className="text-xl font-bold text-indigo-700 mb-3">Complexity Analysis</h3>
+              <div className="rounded-lg border border-indigo-100 bg-white p-6 shadow-sm">
+                <h3 className="mb-3 text-xl font-bold text-indigo-700">Complexity Analysis</h3>
                 <div className="space-y-3 text-slate-700">
                   <div>
                     <span className="font-semibold">Time Complexity:</span> O(9^(n²)) in the worst case, where n is the board size (9 for standard Sudoku).
@@ -73,7 +73,7 @@ const SudokuPage = () => {
                   <div>
                     <span className="font-semibold">Average Case:</span> Much faster than worst case due to pruning invalid paths early.
                   </div>
-                  <div className="text-slate-500 text-sm mt-4">
+                  <div className="mt-4 text-sm text-slate-500">
                     Note: For most reasonable Sudoku puzzles, the algorithm performs quite efficiently despite the theoretical worst-case complexity.
                   </div>
                 </div>
@@ -151,68 +151,68 @@ function isValidPlacement(board, row, col, num) {
         
         <TabsContent value="guide" className="space-y-6">
           <div>
-            <h2 className="text-2xl font-bold text-indigo-800 mb-4">How to Use This Visualizer</h2>
+            <h2 className="mb-4 text-2xl font-bold text-indigo-800">How to Use This Visualizer</h2>
             
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
-              <div className="bg-white p-6 rounded-lg shadow-sm border border-indigo-100">
-                <h3 className="text-xl font-bold text-indigo-700 mb-3">Controls</h3>
+            <div className="mb-8 grid gap-8 md:grid-cols-2">
+              <div className="rounded-lg border border-indigo-100 bg-white p-6 shadow-sm">
+                <h3 className="mb-3 text-xl font-bold text-indigo-700">Controls</h3>
                 <ul className="space-y-3 text-slate-700">
                   <li className="flex items-start">
-                    <span className="font-semibold min-w-32">Difficulty:</span>
+                    <span className="min-w-32 font-semibold">Difficulty:</span>
                     <span>Choose between Easy, Medium, and Hard puzzles</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="font-semibold min-w-32">Animation Speed:</span>
+                    <span className="min-w-32 font-semibold">Animation Speed:</span>
                     <span>Adjust how fast the algorithm runs (lower values = faster)</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="font-semibold min-w-32">New Puzzle:</span>
+                    <span className="min-w-32 font-semibold">New Puzzle:</span>
                     <span>Generate a new Sudoku puzzle at the selected difficulty</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="font-semibold min-w-32">Reset:</span>
+                    <span className="min-w-32 font-semibold">Reset:</span>
                     <span>Return to the original puzzle state</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="font-semibold min-w-32">Solve:</span>
+                    <span className="min-w-32 font-semibold">Solve:</span>
                     <span>Begin the visualization (changes to Stop while running)</span>
                   </li>
                 </ul>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-sm border border-indigo-100">
-                <h3 className="text-xl font-bold text-indigo-700 mb-3">Color Guide</h3>
+              <div className="rounded-lg border border-indigo-100 bg-white p-6 shadow-sm">
+                <h3 className="mb-3 text-xl font-bold text-indigo-700">Color Guide</h3>
                 <ul className="space-y-3 text-slate-700">
                   <li className="flex items-center">
-                    <div className="w-5 h-5 bg-slate-800 rounded mr-3"></div>
-                    <span>Original puzzle numbers (can't be changed)</span>
+                    <div className="mr-3 size-5 rounded bg-slate-800"></div>
+                    <span>{"Original puzzle numbers (can't be changed)"}</span>
                   </li>
                   <li className="flex items-center">
-                    <div className="w-5 h-5 bg-blue-600 rounded mr-3"></div>
-                    <span>Numbers you've entered</span>
+                    <div className="mr-3 size-5 rounded bg-blue-600"></div>
+                    <span>{"Numbers you've entered"}</span>
                   </li>
                   <li className="flex items-center">
-                    <div className="w-5 h-5 bg-blue-200 rounded mr-3"></div>
+                    <div className="mr-3 size-5 rounded bg-blue-200"></div>
                     <span>Currently processing cell</span>
                   </li>
                   <li className="flex items-center">
-                    <div className="w-5 h-5 bg-red-200 rounded mr-3"></div>
+                    <div className="mr-3 size-5 rounded bg-red-200"></div>
                     <span>Backtracking (algorithm is undoing this placement)</span>
                   </li>
                   <li className="flex items-center">
-                    <div className="w-5 h-5 bg-indigo-100 rounded mr-3"></div>
+                    <div className="mr-3 size-5 rounded bg-indigo-100"></div>
                     <span>Related cells (same row, column, or 3x3 block)</span>
                   </li>
                 </ul>
               </div>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-indigo-100">
-              <h3 className="text-xl font-bold text-indigo-700 mb-3">Sudoku Rules</h3>
-              <p className="text-slate-700 mb-4">
+            <div className="rounded-lg border border-indigo-100 bg-white p-6 shadow-sm">
+              <h3 className="mb-3 text-xl font-bold text-indigo-700">Sudoku Rules</h3>
+              <p className="mb-4 text-slate-700">
                 Sudoku is a 9x9 grid-based puzzle game with the following rules:
               </p>
-              <ul className="list-disc pl-5 space-y-2 text-slate-700">
+              <ul className="list-disc space-y-2 pl-5 text-slate-700">
                 <li>Each row must contain the numbers 1-9 without repetition</li>
                 <li>Each column must contain the numbers 1-9 without repetition</li>
                 <li>Each of the nine 3x3 boxes must contain the numbers 1-9 without repetition</li>
@@ -222,7 +222,7 @@ function isValidPlacement(board, row, col, num) {
         </TabsContent>
       </Tabs>
       
-      <div className="text-center text-sm text-slate-500 mt-12">
+      <div className="mt-12 text-center text-sm text-slate-500">
         <p>
           This visualizer demonstrates backtracking algorithms and provides educational insights into solving techniques.
         </p>
